@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+    <script>
+
+
+// computerPlay function is working as designed
+function computerPlay() {
+
+plays = ["rock", "paper", "scissors"];
+let selection = plays[Math.floor(Math.random() * 3)];
+return selection;
+
+}
+
+
+
+function playerSelection() {
+
+let personPlay = prompt("Please enter rock, paper, or scissors");
+personPlay.toLowerCase();    
+
+if ( (personPlay != "rock") && (personPlay != "paper") && (personPlay != "scissors")) {
+    playerSelection();
+}
+
+return personPlay;
+
+}
+
+
+
+function playRound (playerSelection, computerPlay) {
+
+    if (playerSelection === computerPlay){
+        return "draw";
+    }
+else if ( (playerSelection === "rock") && (computerPlay === "scissors") || (playerSelection === "paper") && (computerPlay === "rock") || (playerSelection === "scissors") 
+&& (computerPlay === "paper")){
+    return "playerwin";
+}
+else {
+return "computerwin";
+}
+
+
+}
+
+function game() {
+
+let humanCounter = 0;
+let comCounter = 0;
+
+for (i = 0; i < 5; i++){
+    let player = playerSelection();
+let computer = computerPlay();
+let result = playRound(player, computer);
+
+if (result === "playerwin"){
+    humanCounter++;
+}
+else if (result === "computerwin"){
+    comCounter++;
+}
+}
+
+if (humanCounter === comCounter){
+    return "Looks like nobody wins...";
+}
+else if (humanCounter > comCounter){
+    return "The human wins!";
+}
+else if (comCounter > humanCounter){
+    return "The machine has won...";
+}
+
+}
+
+
+
+
+
+    </script>
+
+
+</body>
+
+
+</html>
